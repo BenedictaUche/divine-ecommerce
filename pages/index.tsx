@@ -1,14 +1,17 @@
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
+import Hero from '@/components/Homepage/Hero'
+import CategoriesCard from '@/components/Homepage/CatergoriesCard'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
   return (
-    <main
-      className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}
+    <div
+      className={`  ${inter.className}`}
     >
-      <h1>Title</h1>
-    </main>
+      <Hero />
+      <CategoriesCard />
+    </div>
   )
 }
