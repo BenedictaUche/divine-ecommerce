@@ -5,3 +5,7 @@
 .bg-primary {
     @apply bg-teal-600;
 }
+
+.text-primary {
+    @apply text-teal-600;
+}
