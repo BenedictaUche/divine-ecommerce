@@ -1,11 +1,21 @@
 import React, { useState, useEffect } from 'react';
-import Image from 'next/image';
+import Image, { StaticImageData } from 'next/image';
 import heroImageOne from '@/public/hero-image-1.png';
 import heroImageTwo from '@/public/hero-image-1.png';
 import heroImageThree from '@/public/hero-image-1.png';
-import { MdOutlineKeyboardArrowRight, MdOutlineKeyboardArrowLeft, MdOutlineArrowForward } from "react-icons/md";
+import {
+  MdOutlineKeyboardArrowRight,
+  MdOutlineKeyboardArrowLeft,
+  MdOutlineArrowForward,
+} from 'react-icons/md';
 
-const carouselContent = [
+interface CarouselContent {
+  image: StaticImageData;
+  title: string;
+  description: string;
+}
+
+const carouselContent: CarouselContent[] = [
   {
     image: heroImageOne,
     title: 'Revive Turmeric CBD Oil',
@@ -19,11 +29,11 @@ const carouselContent = [
   {
     image: heroImageThree,
     title: 'Baby Bee Shampoo',
-    description: ' Shampoo that makes your hair look like a baby bee',
+    description: 'Shampoo that makes your hair look like a baby bee',
   },
 ];
 
-const Hero = () => {
+const Hero: React.FC = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const nextSlide = () => {
@@ -65,20 +75,22 @@ const Hero = () => {
             <div className="absolute inset-0 flex flex-col items-start justify-center gap-3 text-black p-4">
               <h2 className="text-3xl font-bold mb-2">{item.title}</h2>
               <p className="text-lg">{item.description}</p>
-              <button className='inline-flex items-center bg-primary px-4 py-2 rounded-3xl text-white'>Show more <MdOutlineArrowForward /></button>
+              <button className="inline-flex items-center bg-primary px-4 py-2 rounded-3xl text-white">
+                Show more <MdOutlineArrowForward />
+              </button>
             </div>
           </div>
         ))}
       </div>
       <button
         onClick={prevSlide}
-        className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex items-center justify-center w-4 h-4 rounded-full bg-gray-800 text-white focus:outline-none"
+        className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex items-center justify-center w-8 h-8 rounded-full bg-gray-800 text-white focus:outline-none"
       >
         <MdOutlineKeyboardArrowLeft />
       </button>
       <button
         onClick={nextSlide}
-        className="absolute bottom-4 left-1/2 transform translate-x-1/2 flex items-center justify-center w-4 h-4 rounded-full bg-gray-800 text-white focus:outline-none ml-4"
+        className="absolute bottom-4 left-1/2 transform translate-x-1/2 flex items-center justify-center w-8 h-8 rounded-full bg-gray-800 text-white focus:outline-none ml-4"
       >
         <MdOutlineKeyboardArrowRight />
       </button>
