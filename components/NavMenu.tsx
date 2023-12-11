@@ -56,76 +56,91 @@ const components: { title: string; href: string; description: string }[] = [
   },
 ];
 
+
+
+const ListItem =  React.forwardRef<React.ElementRef<"a">, React.ComponentPropsWithoutRef<"a">>(({ className, title, children, ...props }, ref) => {
+  return (
+    <Link href="/" legacyBehavior passHref>
+      <a ref={ref} className={cn("flex items-center gap-4", className)} {...props}>
+        <span className="text-primary">{title}</span>
+        <MdKeyboardArrowRight className="text-primary" />
+      </a>
+    </Link>
+  );
+});
+
+
+
+
 const NavMenu = () => {
   return (
-    <NavigationMenu>
-      <NavigationMenuList>
-        <NavigationMenuItem>
+    <div className="bg-primary py-4 text-white mt-4">
+    <NavigationMenu >
+      <NavigationMenuList className="flex flex-row gap-4">
+        <NavigationMenuItem className="">
           <NavigationMenuTrigger>Shop By Category</NavigationMenuTrigger>
           <NavigationMenuContent>
-            <NavigationMenuItem className="flex flex-col gap-4">
-              {components.map((component) => (
-                <Link href={component.href} key={component.title}>
-                  <NavigationMenu className="flex items-center gap-4">
-                    <span className="text-primary">{component.title}</span>
-                    <MdKeyboardArrowRight className="text-primary" />
-                  </NavigationMenu>
-                </Link>
+            <ul className="flex flex-col gap-4 w-96">
+              {components.map((item, i) => (
+                <li key={i}>
+                  <ListItem title={item.title}>{item.title}</ListItem>
+                </li>
               ))}
-            </NavigationMenuItem>
+            </ul>
           </NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <Link href="/" legacyBehavior passHref>
-            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+          <Link href='/categories/nutrition' legacyBehavior passHref>
+            <NavigationMenuLink>
               Nutrition & Supplements
             </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <Link href="/" legacyBehavior passHref>
-            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+          <Link href="/categories/diabetes" legacyBehavior passHref>
+            <NavigationMenuLink className=''>
               Diabetes
             </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <Link href="/" legacyBehavior passHref>
-            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+          <Link href="/categories/healthcaredevices" legacyBehavior passHref>
+            <NavigationMenuLink className=''>
               Healthcare Devices
             </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <Link href="/" legacyBehavior passHref>
-            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+          <Link href="/categories/personalcare" legacyBehavior passHref>
+            <NavigationMenuLink className=''>
               Personal Care
             </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <Link href="/" legacyBehavior passHref>
-            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+          <Link href="/categories/beautycare" legacyBehavior passHref>
+            <NavigationMenuLink className=''>
               Beauty Care
             </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <Link href="/" legacyBehavior passHref>
-            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+          <Link href="/categories/motherbabycare" legacyBehavior passHref>
+            <NavigationMenuLink className=''>
               Mother & Baby Care
             </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <Link href="/" legacyBehavior passHref>
-            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+          <Link href="/categories/groceries" legacyBehavior passHref>
+            <NavigationMenuLink className=''>
               Groceries
             </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>
       </NavigationMenuList>
     </NavigationMenu>
+    </div>
   );
 };
 
