@@ -1,6 +1,6 @@
 import { FaLocationDot, FaPhone, FaEnvelope } from "react-icons/fa6";
 
-const Footer = () => {
+const Footer: React.FC = () => {
   return (
     <>
       <footer className="footer bg-black text-white">
