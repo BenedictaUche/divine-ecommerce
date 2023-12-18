@@ -2,7 +2,9 @@ import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import Hero from '@/components/Homepage/Hero'
 import CategoriesCard from '@/components/Homepage/CatergoriesCard'
-import Fitness from '@/components/Homepage/Fitness'
+// import Fitness from '@/components/Homepage/Fitness'
+// import MedicalEssentials from '@/components/Homepage/MedicalEssentials'
+import HomeCards from '@/components/Homepage/HomeCards'
 import { GetStaticProps } from 'next'
 import { createClient } from 'contentful'
 
@@ -29,13 +31,16 @@ export const getStaticProps: GetStaticProps<HomeProps> = async () => {
 }
 
 export default function Home({ products }: HomeProps) {
+  console.log(products)
   return (
     <div
       className={`  ${inter.className}`}
     >
       <Hero />
       <CategoriesCard />
-      <Fitness products={products} />
+      <HomeCards products={products} />
+      {/* <Fitness products={products} />
+      <MedicalEssentials products={products} /> */}
     </div>
   )
 }
