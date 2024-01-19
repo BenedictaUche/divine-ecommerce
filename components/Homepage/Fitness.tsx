@@ -56,7 +56,7 @@ const Fitness: React.FC<FitnessProps> = ({ products }) => {
   const displayedProducts = products.slice(0, 4);
 
   return (
-    <div >
+    <div className="mx-16">
       <h2 className="my-6 text-2xl font-bold">Fitness & Supplements</h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {displayedProducts.map((product) => (

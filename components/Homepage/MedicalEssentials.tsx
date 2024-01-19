@@ -57,7 +57,7 @@ const MedicalEssentials = ({ products }: MedicalEssentialsProps) => {
   const displayedProducts = products.slice(4, 8);
 
   return (
-    <div className="my-20">
+    <div className="my-20 mx-16">
       <h2 className="my-6 text-2xl font-bold">Medical Essentials</h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {displayedProducts.map((product) => (

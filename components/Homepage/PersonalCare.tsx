@@ -1,7 +1,5 @@
 import React, { useState } from "react";
-import Image from "next/image";
 import { IoMdHeartEmpty, IoMdHeart, IoMdBasket } from "react-icons/io";
-import gradientImg from "@/public/gradient-bg.png";
 
 interface Product {
   sys: {
@@ -31,17 +29,9 @@ interface Product {
   };
 }
 
-interface TopDealsProps {
+interface PersonalCareProps {
   products: Product[];
 }
-
-interface BackgroundImage {
-  backgroundImage: string;
-  backgroundRepeat: string;
-  backgroundSize: string;
-  backgroundPosition: string;
-}
-
 
 const truncateDescription = (
   description: string,
@@ -53,22 +43,7 @@ const truncateDescription = (
   return description;
 };
 
-
-
-
-
-
-
-const backgroundImageConvert: BackgroundImage | undefined = {
-  backgroundImage: `url(${gradientImg.src})`,
-  backgroundRepeat: "no-repeat",
-  backgroundSize: "cover",
-  backgroundPosition: "center",
-};
-
-
-
-const Topdeal = ({ products }: TopDealsProps) => {
+const PersonalCare: React.FC<PersonalCareProps> = ({ products }) => {
   const [favorites, setFavorites] = useState<string[]>([]);
 
   const toggleFavorite = (productId: string) => {
@@ -79,16 +54,16 @@ const Topdeal = ({ products }: TopDealsProps) => {
     );
   };
 
-  const displayedProducts = products.slice(4, 8);
+  const displayedProducts = products.slice(0, 4);
 
   return (
-    <div className="py-10 px-20 pb-20" style={{ ...backgroundImageConvert}}>
-      <h2 className="my-6 text-3xl font-bold text-white capitalize">Top deals zone</h2>
+    <div className="mx-16">
+      <h1 className="my-6 text-2xl font-bold">Personal Care</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {displayedProducts.map((product) => (
           <div
             key={product.sys.id}
-            className="relative flex flex-col gap-4 p-4 shadow-md border border-gray-200 rounded-lg hover:shadow-lg transition duration-300 ease-in-out cursor-pointer bg-white"
+            className="relative p-4 flex flex-col gap-4 shadow-md border border-gray-200 rounded-md hover:shadow-lg transition duration-300 ease-in-out cursor-pointer"
           >
             <img
               src={product.fields.productImage.fields.file.url}
@@ -137,4 +112,4 @@ const Topdeal = ({ products }: TopDealsProps) => {
   );
 };
 
-export default Topdeal;
+export default PersonalCare;

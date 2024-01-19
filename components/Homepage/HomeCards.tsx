@@ -2,6 +2,8 @@ import React from 'react';
 import Fitness from './Fitness';
 import MedicalEssentials from './MedicalEssentials';
 import Topdeal from './Topdeal';
+import PersonalCare from './PersonalCare';
+import Breaker from './Breaker';
 
 interface HomeCardsProps {
     products: any;
@@ -9,10 +11,12 @@ interface HomeCardsProps {
 
 const HomeCards: React.FC<HomeCardsProps> = ({ products }) => {
     return (
-        <div className="mx-16">
+        <div >
             <Fitness products={products} />
             <MedicalEssentials products={products} />
             <Topdeal products={products}/>
+            <PersonalCare products={products} />
+            <Breaker />
         </div>
     );
 }
