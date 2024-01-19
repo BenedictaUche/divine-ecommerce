@@ -20,14 +20,14 @@ const breakerData = [
 
 const Breaker = () => {
   return (
-    <div className='flex items-center separator'>
+    <div className='flex items-center divide-x divide-slate-700 my-8'>
         {breakerData.map((breaker) => {
             return (
                 <div className="flex items-center gap-2 justify-center w-full h-32 bg-amber-600">
                     <div className="flex items-center justify-center w-16 h-16 bg-gray-300 rounded-full">
                         {breaker.icon}
                     </div>
-                    <h2 className="mt-4 text-2xl font-bold capitalize">{breaker.title}</h2>
+                    <h2 className="mt-4 text-2xl font-bold capitalize w-40">{breaker.title}</h2>
                 </div>
             )
         })}
